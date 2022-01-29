@@ -35,7 +35,7 @@ with open('sample_special_data', 'w') as fp:
 
         f.write('insert into person(person_type, dob, firstname, lastname, ssn)\n')
         if PERSON_TYPE == 'P':
-            fp.write('insert into patient(person_id, weight, height)\n')
+            fp.write('insert into patient(person_id)\n')
 
         for i in range(AMOUNT):
             time_between_dates = end_date - start_date
@@ -60,13 +60,13 @@ with open('sample_special_data', 'w') as fp:
             if i == 0:
                 f.write(f'values(\'{PERSON_TYPE}\',\'{random_date}\',\'{first_name}\',\'{last_name}\',\'{ssn}\'),\n')
                 if PERSON_TYPE == 'P':
-                    fp.write(f'values({i+START_ID},{round(random.uniform(40,100),1)},{round(random.uniform(120,200),1)}),\n')
+                    fp.write(f'values({i+START_ID}),\n')
             elif i == AMOUNT - 1:
                 f.write(f'(\'{PERSON_TYPE}\',\'{random_date}\',\'{first_name}\',\'{last_name}\',\'{ssn}\');\n')
                 if PERSON_TYPE == 'P':
-                    fp.write(f'({i+START_ID},{round(random.uniform(40,100),1)},{round(random.uniform(120,200),1)});\n')
+                    fp.write(f'({i+START_ID});\n')
             else:
                 f.write(f'(\'{PERSON_TYPE}\',\'{random_date}\',\'{first_name}\',\'{last_name}\',\'{ssn}\'),\n')
                 if PERSON_TYPE == 'P':
-                    fp.write(f'({i+START_ID},{round(random.uniform(40,100),1)},{round(random.uniform(120,200),1)}),\n')
+                    fp.write(f'({i+START_ID}),\n')
 
